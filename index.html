@@ -429,18 +429,30 @@
 
     .experience-section { padding-top: 28px; }
     .experience-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 18px; align-items: stretch; }
-    .experience-visual { min-height: 520px; padding: 28px; border-radius: 24px; position: relative; overflow: hidden; color: #fff; background: linear-gradient(145deg,#151611,#080906 72%); border: 1px solid rgba(255,255,255,.08); }
+    .experience-visual { min-height: 0; padding: 30px; border-radius: 24px; position: relative; overflow: hidden; color: #fff; background: linear-gradient(145deg,#151611,#080906 72%); border: 1px solid rgba(255,255,255,.08); }
     .experience-visual::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 76% 20%,rgba(255,214,99,.21),transparent 31%), linear-gradient(120deg,transparent 55%,rgba(229,184,61,.05)); }
-    .experience-copy { position: relative; z-index: 1; max-width: 430px; }
+    .experience-copy { position: relative; z-index: 2; max-width: 520px; }
     .experience-copy p { color: #aaa596; line-height: 1.7; margin: 15px 0 0; }
-    .mini-browser { position: absolute; left: 28px; right: 28px; bottom: 28px; height: 265px; border-radius: 18px; padding: 12px; background: #20211c; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 24px 55px rgba(0,0,0,.35); }
+    .mini-browser { position: relative; z-index: 1; height: 286px; margin-top: 34px; border-radius: 18px; padding: 12px; background: #20211c; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 24px 55px rgba(0,0,0,.35), 0 0 34px rgba(229,184,61,.06); }
     .browser-bar { display: flex; align-items: center; gap: 5px; height: 24px; }
     .browser-bar span { width: 7px; height: 7px; border-radius: 50%; background: #56564d; }
     .browser-bar span:first-child { background: #e9b735; }
     .browser-url { margin-left: 8px; height: 16px; width: 46%; border-radius: 8px; background: #2e2f29; }
-    .browser-body { display: grid; grid-template-columns: .84fr 1.16fr; gap: 11px; height: 208px; }
-    .browser-poster { border-radius: 12px; background: linear-gradient(145deg,#f3d069,#7b510b); position: relative; overflow: hidden; }
-    .browser-poster::before { content: ""; position: absolute; width: 150px; height: 190px; border-radius: 50%; right: -50px; bottom: -85px; background: rgba(20,17,9,.5); box-shadow: -105px -55px 0 -40px rgba(255,244,200,.55); }
+    .browser-body { display: grid; grid-template-columns: .92fr 1.08fr; gap: 11px; height: 228px; }
+    .browser-poster { border-radius: 12px; background: radial-gradient(circle at 76% 18%,rgba(255,241,180,.52),transparent 20%),linear-gradient(145deg,#cf9a24,#4c3408 74%); position: relative; overflow: hidden; border: 1px solid rgba(255,235,174,.16); isolation: isolate; }
+    .browser-poster::before { content: ""; position: absolute; z-index: -1; width: 190px; height: 190px; border-radius: 50%; right: -88px; bottom: -108px; background: rgba(13,12,8,.46); box-shadow: -126px -74px 0 -50px rgba(255,244,200,.35); }
+    .browser-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg,transparent 35%,rgba(255,255,255,.12) 47%,transparent 58%); transform: translateX(-110%); animation: poster-sheen 5.5s ease-in-out infinite; pointer-events: none; }
+    .poster-stack { position: absolute; inset: 20px 18px 34px; }
+    .poster-file { position: absolute; width: 66%; height: 71%; left: 17%; top: 14%; border-radius: 14px; border: 1px solid rgba(255,242,198,.25); background: linear-gradient(155deg,rgba(255,240,187,.24),rgba(35,26,7,.55)); box-shadow: 0 18px 30px rgba(29,20,3,.25); }
+    .poster-file.back { transform: translate(-16px,-10px) rotate(-8deg); opacity: .55; }
+    .poster-file.front { transform: rotate(5deg); overflow: hidden; }
+    .poster-file.front::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 52%; background: linear-gradient(150deg,transparent 0 28%,#5f430d 29% 58%,#1e190d 59%); }
+    .poster-file.front::after { content: ""; position: absolute; width: 34px; height: 34px; border-radius: 50%; right: 18px; top: 16px; background: rgba(255,236,174,.78); box-shadow: 0 0 28px rgba(255,223,119,.38); }
+    .poster-play { position: absolute; z-index: 2; left: 50%; top: 50%; width: 47px; height: 47px; display: grid; place-items: center; transform: translate(-50%,-50%); border-radius: 50%; color: #211805; background: rgba(255,248,219,.94); box-shadow: 0 12px 26px rgba(22,15,2,.32); }
+    .poster-play svg { margin-left: 3px; }
+    .poster-caption { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 13px; display: flex; justify-content: space-between; align-items: center; }
+    .poster-caption span:first-child { width: 48%; height: 5px; border-radius: 6px; background: rgba(255,247,218,.74); box-shadow: 0 9px 0 rgba(255,247,218,.27); }
+    .poster-caption span:last-child { width: 30px; height: 18px; border-radius: 6px; background: rgba(13,12,8,.66); }
     .browser-files { display: grid; gap: 8px; }
     .browser-file { display: grid; grid-template-columns: 34px 1fr auto; gap: 9px; align-items: center; border-radius: 10px; padding: 8px; background: #292a24; }
     .browser-file i { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; font-style: normal; background: rgba(229,184,61,.14); color: #f3c950; }
@@ -530,6 +542,7 @@
     @keyframes rail { to { transform: translateX(-50%); } }
     @keyframes scan { 0%,100% { transform: translateY(0); opacity: 0; } 14%,86% { opacity: 1; } 50% { transform: translateY(370px); } }
     @keyframes check-pulse { 0%,100% { border-color: rgba(255,255,255,.055); background: rgba(255,255,255,.035); } 50% { border-color: rgba(255,217,117,.18); background: rgba(229,184,61,.055); } }
+    @keyframes poster-sheen { 0%,58% { transform: translateX(-110%); } 82%,100% { transform: translateX(110%); } }
 
     @media (max-width: 900px) {
       .shell { width: min(100% - 28px, 760px); }
@@ -597,10 +610,11 @@
       .steps { gap: 38px; }
       .steps::before { width: 1px; height: auto; top: 40px; bottom: 40px; left: 50%; right: auto; background: linear-gradient(transparent, rgba(229,184,61,.4), transparent); }
       .process-title { margin-bottom: 42px; }
-      .experience-visual { min-height: 540px; padding: 24px 20px; }
-      .mini-browser { left: 20px; right: 20px; bottom: 20px; height: 285px; }
-      .browser-body { grid-template-columns: 1fr; height: 228px; }
-      .browser-poster { min-height: 72px; }
+      .experience-visual { min-height: 0; padding: 24px 20px; }
+      .mini-browser { height: auto; min-height: 425px; margin-top: 28px; }
+      .browser-body { grid-template-columns: 1fr; height: auto; }
+      .browser-poster { min-height: 160px; }
+      .poster-stack { inset: 14px 28px 30px; }
       .browser-files { gap: 5px; }
       .browser-file { padding: 5px 7px; }
       .browser-file i { width: 28px; height: 28px; }
@@ -759,7 +773,7 @@
             <div class="experience-copy"><div class="kicker">A CLEARER FILE VIEW</div><h2>See what matters before the handoff.</h2><p>A structured result keeps domain, protocol, and share-path checks easy to scan before you continue to the original TeraBox page.</p></div>
             <div class="mini-browser" aria-label="Illustrated shared folder file browser">
               <div class="browser-bar"><span></span><span></span><span></span><div class="browser-url"></div></div>
-              <div class="browser-body"><div class="browser-poster"></div><div class="browser-files">
+              <div class="browser-body"><div class="browser-poster" aria-label="Rich video and shared-file preview"><div class="poster-stack"><span class="poster-file back"></span><span class="poster-file front"></span><span class="poster-play"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z" fill="currentColor"/></svg></span></div><div class="poster-caption"><span></span><span></span></div></div><div class="browser-files">
                 <div class="browser-file"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor"/></svg></i><span><b>Public share URL</b><small>Domain check</small></span><em>Ready</em></div>
                 <div class="browser-file"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="m5 18 5-5 3 3 2-2 4 4" stroke="currentColor" stroke-width="1.7"/></svg></i><span><b>Secure HTTPS</b><small>Protocol check</small></span><em>Ready</em></div>
                 <div class="browser-file"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7"/></svg></i><span><b>Share path</b><small>Structure check</small></span><em>Ready</em></div>
